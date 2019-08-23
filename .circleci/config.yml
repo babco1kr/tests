@@ -1,10 +1,16 @@
 version: 2
 jobs:
-  one:
+  test:
     docker:
       - image: circleci/node:9.10
     steps:
+      - checkout
       - run:
           name: Install npm packages
-          command: 'npm i'
-          command: 'npm test'
+          command: npm i
+          command: npm test
+workflows:
+  version: 2
+  test:
+    jobs:
+      -test
